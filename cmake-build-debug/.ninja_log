@@ -1,0 +1,17 @@
+# ninja log v5
+45	984	6774386363750369	CMakeFiles/Assignment2.dir/Manager.cpp.obj	2b5b7cf649914ca3
+40	1068	6774386364531559	CMakeFiles/Assignment2.dir/Person.cpp.obj	d089b64a6975c612
+2522	2890	6774386382655284	Assignment2.exe	945da7fd7f4690b9
+985	2181	6774386375624506	CMakeFiles/Assignment2.dir/WordProcessor.cpp.obj	f15c1222adfc6b00
+17	1944	6774386373124680	CMakeFiles/Assignment2.dir/ReadWords.cpp.obj	14fd13ccb9c1a392
+33	2069	6774386374218361	CMakeFiles/Assignment2.dir/Main.cpp.obj	148f5c2d5bf89f30
+9	2084	6774386374530864	CMakeFiles/Assignment2.dir/Gamer.cpp.obj	ef2ba423199f8c88
+27	2521	6774386379061777	CMakeFiles/Assignment2.dir/Hangman.cpp.obj	cebade10486d2ef3
+29	912	6774386711263761	CMakeFiles/Assignment2.dir/Person.cpp.obj	d089b64a6975c612
+23	935	6774386711420002	CMakeFiles/Assignment2.dir/Manager.cpp.obj	2b5b7cf649914ca3
+19	1248	6774386714544786	CMakeFiles/Assignment2.dir/Main.cpp.obj	148f5c2d5bf89f30
+4	1269	6774386714857265	CMakeFiles/Assignment2.dir/ReadWords.cpp.obj	14fd13ccb9c1a392
+10	1481	6774386716888367	CMakeFiles/Assignment2.dir/Gamer.cpp.obj	ef2ba423199f8c88
+913	1677	6774386718919476	CMakeFiles/Assignment2.dir/WordProcessor.cpp.obj	f15c1222adfc6b00
+14	1751	6774386719700837	CMakeFiles/Assignment2.dir/Hangman.cpp.obj	cebade10486d2ef3
+1752	2054	6774386722512934	Assignment2.exe	945da7fd7f4690b9
