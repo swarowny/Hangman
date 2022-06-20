@@ -122,34 +122,31 @@ T login(string &username, fstream &file, const char *fname, Hangman &h) {
     }
 }
 
-
 int main() {
     fstream file;
     const char *usersFile = "..//users.txt";
     const char *configFile = "..//config.txt";
     const char *wordsFile = "..//sample.txt";
-    const int lvls[] = {1,5,10};
+    const int lvls[] = {1, 5, 10};
 
     //TODO: somehow loadConfig messes up the filename
 
-    Hangman h(wordsFile, lvls);
-//    Hangman h;
-    h.loadUsers(file, usersFile);
+    auto *h = new Hangman(wordsFile, lvls);
+    h->loadUsers(file, usersFile);
 
     // asking for username and logging in
     string name;
     cout << "Enter your username: ";
     getline(cin >> ws, name);
-    auto *p = login<Person *>(name, file, usersFile, h);
-    Gamer *g = nullptr;
+    auto *p = login<Person *>(name, file, usersFile, *h);
+    Gamer *g;
     string user = p->whoAmI();
 
     if (p->whoAmI() == "gamer") {
         g = dynamic_cast<Gamer *> (p);
     }
-    else delete g;
 
-    h.loadConfig(file, configFile);
+    h->loadConfig(file, configFile);
     string choice;
 
     while (true) {
@@ -160,36 +157,34 @@ int main() {
         if (user == "gamer" && choice == "1") {
             string levelChoice;
             while (true) {
-                h.showLevels();
+                h->showLevels();
                 cout << "Choice: ";
                 cin >> levelChoice;
 
                 if (levelChoice == "1") {
-                    h.playGame(Gamer::EASY, g);
-                    break;
+                    h->playGame(Gamer::EASY, g);
                 } else if (levelChoice == "2") {
-                    h.playGame(Gamer::MEDIUM, g);
-                    break;
+                    h->playGame(Gamer::MEDIUM, g);
                 } else if (levelChoice == "3") {
-                    h.playGame(Gamer::HARD, g);
-                    break;
+                    h->playGame(Gamer::HARD, g);
                 } else if (levelChoice == "4") {
                     break;
                 } else {
                     cout << "Please choose option 1-4" << endl << endl;
                 }
+                cout << endl << endl << "Want to play again? Choose the level or press 4 to go back. ";
             }
         } else if (user == "gamer" && choice == "2") {
             Hangman::displayStatistics(g);
         } else if (user == "gamer" && choice == "3") {
-            h.displayTop10();
+            h->displayTop10();
         } else if (user == "manager" && choice == "1") {
-            h.resetGame();
+            h->resetGame();
         } else if (user == "manager" && choice == "2") {
             int level;
             int min;
             cout << "\nWhich level do you wish to change? ";
-            h.showLevels();
+            h->showLevels();
 
             cin >> level;
             while (!cin.good() || (level != 1 && level != 2 && level != 3 && level != 4)) {
@@ -212,9 +207,9 @@ int main() {
                 cin >> min;
             }
 
-            h.changeLevels(level - 1, min);
+            h->changeLevels(level - 1, min);
             cout << endl << "Levels changed: ";
-            h.showLevels();
+            h->showLevels();
         } else if (user == "manager" && choice == "3") {
             string username;
             cout << "Enter the manager's username or 1 to go back: ";
@@ -226,11 +221,11 @@ int main() {
                 cout << "Username is already taken. Please choose a different one: ";
                 getline(cin >> ws, username);
             }
-            h.addManager(username);
+            h->addManager(username);
         } else if (user == "manager" && choice == "4") {
             string filename;
             while (true) {
-                cout << "Current filename: " << h.getFilename() << endl;
+                cout << "Current filename: " << h->getFilename() << endl;
                 cout << "Enter the filename or press 1 to go back: ";
                 cin >> filename;
                 if (filename == "1") {
@@ -252,7 +247,7 @@ int main() {
                 if (correct == "2") {
                     continue;
                 } else {
-                    h.setWordFile(filename.c_str());
+                    h->setWordFile(filename.c_str());
                     cout << "\nFilename successfully changed to " << filename << endl;
                     break;
                 }
@@ -266,17 +261,9 @@ int main() {
             cout << (user == "gamer" ? "4" : "5") << endl << endl;
         }
     }
-    h.saveConfig(file, configFile);
-    h.saveUsers(file, usersFile);
+    h->saveConfig(file, configFile);
+    h->saveUsers(file, usersFile);
     delete g;
 
     return 0;
 }
-
-
-//TODO
-/* ********** FOR LECTURER ***********
-I could not finish the assignment because when I run getWords() method,
-it somehow changes my filename, and I have no idea how to fix it
-*/
-

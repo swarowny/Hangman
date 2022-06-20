@@ -195,12 +195,11 @@ void Hangman::playGame(int lvl, Gamer *g) {
     float score = 0;
     guesses.clear();
 
-
-    //TODO: loop to play again or change level?
     while (true) {
         won = true;
         string coveredWord;
-        //getwords does not work, so I will use an example word to show the outputs
+
+        //example word
         wordToGuess = "astonishing";
 
         cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;

@@ -4,8 +4,6 @@
 #include <iostream>
 #include <utility>
 
-//TODO: this one messes up the file name
-
 // constructor opens a file and initialises members
 ReadWords::ReadWords(const char *fname, Hangman h) : hangman(move(h)) {
     wordFile.open(fname);
@@ -37,10 +35,6 @@ string ReadWords::getNextWord() {
     return nextWord;
 }
 
-bool ReadWords::isNextWord() const {
-    return !eofFound;
-}
-
 //TODO maybe look for the word, then go back to a dot, take all the phrase till next dot including
 bool ReadWords::getPhrases() {
     return true;
@@ -52,13 +46,6 @@ bool ReadWords::getPhrases() {
 bool ReadWords::getWords() {
 
     for (int i = 0; i < 5; i++) {
-
-        //TODO: why the heck is it ruining everything when its the same as below
-//        if (isNextWord()) {
-//            nextWord = getNextWord();
-//        }
-//        else return false;
-
 
         if (!eofFound) {
             nextWord = getNextWord();

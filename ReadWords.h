@@ -44,13 +44,6 @@ public:
     string getNextWord();
 
     /**
-     * Returns true if there is a further word in the file, false if we have reached the
-     * end of file.
-     * @ret consturn - bool - !eof
-     */
-    bool isNextWord() const;
-
-    /**
      * This method should get all phrases based on the words randomly selected before
      * the return type is bool so that true means the function was successfully executed
      * and false otherwise. Phrases should be stored in the phrases set.
